@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { changeCurrentUserRandomly } from "../../actions/User.actions";
 import styles from "./Welcome.module.css";
@@ -7,6 +8,7 @@ import styles from "./Welcome.module.css";
 function Welcome() {
   const usersState = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (usersState.users) {
@@ -26,6 +28,10 @@ function Welcome() {
     }
   }, [usersState.currentUser]);
 
+  const handleGetStartedClicked = () => {
+    navigate("home", { replace: true });
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -33,7 +39,12 @@ function Welcome() {
         {usersState.currentUser && UserDetails}
         {usersState.loading && <div>Fetching user details...</div>}
         {usersState.currentUser && (
-          <button className={styles.getStartedButton}>Get Started</button>
+          <button
+            className={styles.getStartedButton}
+            onClick={handleGetStartedClicked}
+          >
+            Get Started
+          </button>
         )}
       </div>
     </div>
