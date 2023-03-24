@@ -1,9 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { loadUsersData } from "./actions/User.actions";
+import Welcome from "./screens/welcome";
+
 function App() {
-  return (
-    <div className='App'>
-      <h1>React Social Media</h1>
-    </div>
-  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUsersData());
+  }, [dispatch]);
+
+  return <Welcome />;
 }
 
 export default App;
