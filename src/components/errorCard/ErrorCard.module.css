@@ -1,0 +1,15 @@
+.container {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: rgba(255, 0, 0, 0.1);
+  max-width: calc(100vw - 2rem);
+}
+
+.message {
+  color: black;
+  border-left: 0.2rem solid red;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  text-align: left;
+}

@@ -7,24 +7,6 @@
   text-align: center;
 }
 
-.userDetails {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10rem;
-  padding: 0.5rem 1.5rem;
-  text-align: start;
-  min-width: 20rem;
-  max-width: calc(100% - 2rem);
-}
-
-.currentUserName {
-  margin: 0;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.currentUserUsername {
-  margin: 0;
-}
-
 .getStartedButton {
   margin: 2rem;
 }
