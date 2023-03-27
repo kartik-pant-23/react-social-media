@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 55px;
+  align-items: center;
+  box-shadow: 0 0 16px #00000024;
+  justify-content: space-around;
+}

@@ -1,0 +1,8 @@
+.header-profile-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: grey;
+  border-radius: 50%;
+}

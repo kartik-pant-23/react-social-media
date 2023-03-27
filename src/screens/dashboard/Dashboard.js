@@ -1,5 +1,13 @@
 import React from "react";
 
-export default function Dashboard() {
-  return <div>Dashboard</div>;
+import Header from "./components/header";
+
+function Dashboard() {
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
+
+export default Dashboard;
