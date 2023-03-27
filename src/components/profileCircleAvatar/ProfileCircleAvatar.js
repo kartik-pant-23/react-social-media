@@ -1,16 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import { getInitials } from "./ProfileCircleAvatar.utils";
 import "./ProfileCircleAvatar.css";
 
-function ProfileBox({ styles }) {
-  const usersState = useSelector((state) => state.users);
+function ProfileCircleAvatar({ styles, name }) {
+  const initials = getInitials(name);
+
   return (
-    <div className={`header-profile-box ${styles}`}>
-      {getInitials(usersState.currentUser.name)}
+    <div className="header-profile-box" style={styles}>
+      {initials}
     </div>
   );
 }
 
-export default ProfileBox;
+export default ProfileCircleAvatar;
