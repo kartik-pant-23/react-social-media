@@ -35,7 +35,12 @@ export const loadUsersData = () => {
       );
       dispatch(fetchUserSuccess(usersData.data));
     } catch (e) {
-      dispatch(fetchUserFailure(e.message || "Oops.. Something went wrong!"));
+      console.error(e);
+      dispatch(
+        fetchUserFailure(
+          "Failed to fetch users' data. Try refreshing the page."
+        )
+      );
     }
   };
 };
