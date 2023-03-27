@@ -1,14 +1,15 @@
 import React from "react";
-import TextBox from "./components/textBox";
 
+import TextBox from "./components/textBox";
+import ProfileBox from "../../../../components/profileCircleAvatar";
 import "./Header.css";
 
 function Header() {
   return (
     <div className="header">
-      <h3>Social App</h3>
+      <h3>React Social App</h3>
       <TextBox />
-      <h3>Profile</h3>
+      <ProfileBox />
     </div>
   );
 }
