@@ -45,7 +45,7 @@ const reducer = (state = initialState, action) => {
       const usersLength = _get(state, "users", []).length;
       let currentUser = null;
       if (usersLength > 0) {
-        const randomUserIndex = _random(usersLength);
+        const randomUserIndex = _random(usersLength - 1);
         currentUser = _get(state, ["users", randomUserIndex]);
       }
       return {

@@ -5,4 +5,5 @@
   padding: 0.5rem;
   background-color: grey;
   border-radius: 50%;
+  aspect-ratio: 1;
 }
