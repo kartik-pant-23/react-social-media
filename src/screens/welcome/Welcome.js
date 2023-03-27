@@ -40,7 +40,9 @@ function Welcome() {
           </>
         )}
 
-        {usersState.error && <ErrorCard message={usersState.error} />}
+        {(usersState.error || !usersState.currentUser) && (
+          <ErrorCard message={usersState.error} />
+        )}
       </div>
     </div>
   );

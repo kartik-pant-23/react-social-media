@@ -5,7 +5,9 @@ import styles from "./ErrorCard.module.css";
 function ErrorCard({ message }) {
   return (
     <div className={styles.container}>
-      <p className={styles.message}>{message}</p>
+      <p className={styles.message}>
+        {message || "Unexpected error ocurred!!"}
+      </p>
     </div>
   );
 }

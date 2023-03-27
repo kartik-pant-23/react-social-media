@@ -1,6 +1,12 @@
-.userDetails {
+.userDetailsContainer {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10rem;
+  display: flex;
+  padding: 0.25rem;
+  align-items: center;
+}
+
+.userDetails {
   padding: 0.5rem 1.5rem;
   text-align: start;
   min-width: 20rem;
