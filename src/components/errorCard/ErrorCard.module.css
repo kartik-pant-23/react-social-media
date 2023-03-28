@@ -3,7 +3,8 @@
   border-radius: 0.25rem;
   border: none;
   background-color: rgba(255, 0, 0, 0.1);
-  max-width: calc(100vw - 2rem);
+  max-width: calc(100% - 2rem);
+  margin: auto;
 }
 
 .message {
