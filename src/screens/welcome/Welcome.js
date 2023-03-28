@@ -19,7 +19,7 @@ function Welcome() {
   }, [dispatch, usersState.users]);
 
   const handleGetStartedClicked = () => {
-    navigate("home", { replace: true });
+    navigate("/home", { replace: true });
   };
 
   return (
@@ -40,7 +40,8 @@ function Welcome() {
           </>
         )}
 
-        {(usersState.error || !usersState.currentUser) && (
+        {(usersState.error ||
+          (!usersState.loading && !usersState.currentUser)) && (
           <ErrorCard message={usersState.error} />
         )}
       </div>

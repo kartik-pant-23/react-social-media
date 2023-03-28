@@ -6,6 +6,9 @@ import { loadUsersData } from "./actions/User.actions";
 import PrivateRoute from "./components/privateRoute";
 import Welcome from "./screens/welcome";
 import Dashboard from "./screens/dashboard";
+import Home from "./screens/dashboard/components/home";
+import Chat from "./screens/dashboard/components/chat";
+import CreatePost from "./screens/dashboard/components/createPost";
 import Profile from "./screens/profile";
 
 function App() {
@@ -18,16 +21,43 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Welcome />} />
+        <Route path='welcome' element={<Welcome />} />
         <Route
-          exact
-          path='home'
+          path='/'
           element={
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
           }
-        />
+        >
+          <Route
+            exact
+            path='home'
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path='chat'
+            element={
+              <PrivateRoute>
+                <Chat />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
+            path='create'
+            element={
+              <PrivateRoute>
+                <CreatePost />
+              </PrivateRoute>
+            }
+          />
+        </Route>
         <Route
           exact
           path='profile'
