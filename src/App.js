@@ -10,6 +10,7 @@ import Home from "./screens/dashboard/components/home";
 import Chat from "./screens/dashboard/components/chat";
 import CreatePost from "./screens/dashboard/components/createPost";
 import Profile from "./screens/profile";
+import ChangeUser from "./screens/changeUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,15 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path='changeUser'
+          element={
+            <PrivateRoute>
+              <ChangeUser />
             </PrivateRoute>
           }
         />
