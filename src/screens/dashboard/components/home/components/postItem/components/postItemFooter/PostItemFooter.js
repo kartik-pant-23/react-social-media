@@ -4,16 +4,24 @@ import PropTypes from "prop-types";
 import styles from "./PostItemFooter.module.css";
 
 function PostItemFooter({ post }) {
-  return <div className={styles.container}>{post.caption}</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.actionContainer}>
+        <button>Like</button>
+        <button>Comment</button>
+        <button>Share</button>
+      </div>
+      {post.caption}
+    </div>
+  );
 }
 
 PostItemFooter.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    file: PropTypes.object.isRequired,
     caption: PropTypes.string.isRequired,
     authorId: PropTypes.number.isRequired,
-    createdAt: PropTypes.string.isRequired,
+    createdAt: PropTypes.instanceOf(Date).isRequired,
   }).isRequired,
 };
 
