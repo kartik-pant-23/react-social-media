@@ -48,7 +48,7 @@ PostItem.propTypes = {
     file: PropTypes.object.isRequired,
     caption: PropTypes.string.isRequired,
     authorId: PropTypes.number.isRequired,
-    createdAt: PropTypes.string.isRequired,
+    createdAt: PropTypes.instanceOf(Date).isRequired,
   }).isRequired,
 };
 

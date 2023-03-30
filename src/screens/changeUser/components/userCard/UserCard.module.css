@@ -1,0 +1,22 @@
+.container {
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.container:hover {
+  background-color: #efefef;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.name {
+  font-size: small;
+  color: gray;
+}
