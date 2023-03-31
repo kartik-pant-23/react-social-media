@@ -1,18 +1,42 @@
 import React from "react";
+<<<<<<< HEAD
 import propTypes from "prop-types";
+=======
+import PropTypes from "prop-types";
+>>>>>>> main
 
 import { getInitials } from "./ProfileCircleAvatar.utils";
-import "./ProfileCircleAvatar.css";
+import DefaultStyles from "./ProfileCircleAvatar.module.css";
 
-function ProfileCircleAvatar({ styles, name }) {
+function ProfileCircleAvatar({ styles, name, onClick }) {
   const initials = getInitials(name);
 
+  if (onClick) {
+    styles = {
+      ...styles,
+      cursor: "pointer",
+    };
+  }
+
   return (
-    <div className="header-profile-box" style={styles}>
+    <button
+      className={DefaultStyles.container}
+      style={styles}
+      onClick={onClick}
+    >
       {initials}
-    </div>
+    </button>
   );
 }
+
+ProfileCircleAvatar.propTypes = {
+  name: PropTypes.string.isRequired,
+};
+
+ProfileCircleAvatar.defaultProps = {
+  styles: {},
+  onClick: () => {},
+};
 
 export default ProfileCircleAvatar;
 

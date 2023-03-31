@@ -1,9 +1,12 @@
 import React, { useCallback } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import styles from "./SideNavigation.module.css";
 
 function SideNavigation() {
+  const draftPost = useSelector((state) => state.posts.draftPost);
+
   const linksClassname = useCallback((linkState) => {
     return `${styles.navLink} ${
       linkState.isActive ? styles.navLinkActive : ""
@@ -19,7 +22,7 @@ function SideNavigation() {
         Chat
       </NavLink>
       <NavLink to='/create' className={linksClassname}>
-        Create Post
+        Create Post {draftPost.file && "(Draft)"}
       </NavLink>
     </div>
   );

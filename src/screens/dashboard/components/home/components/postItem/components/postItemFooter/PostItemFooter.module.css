@@ -1,0 +1,9 @@
+.container {
+  padding: 0.5rem 1rem;
+}
+
+.actionContainer {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem auto;
+}

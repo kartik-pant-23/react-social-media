@@ -1,4 +1,4 @@
-.header-profile-box {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,4 +6,5 @@
   background-color: grey;
   border-radius: 50%;
   aspect-ratio: 1;
+  border: none;
 }

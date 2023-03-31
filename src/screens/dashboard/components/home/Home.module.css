@@ -1,0 +1,6 @@
+.container {
+  width: 80vw;
+  height: calc(100vh - 4rem);
+  padding: 1rem;
+  overflow-y: auto;
+}
