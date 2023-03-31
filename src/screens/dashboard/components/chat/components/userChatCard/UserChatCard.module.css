@@ -1,0 +1,35 @@
+.chatUserCard {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 3px;
+  margin: 0px;
+}
+
+.chatUsersList {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  padding: 0.1rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.userChatDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.chatCardMessage {
+  display: block;
+  font-size: 0.8rem;
+  color: grey;
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: nowrap;
+  text-overflow: ellipsis;
+}

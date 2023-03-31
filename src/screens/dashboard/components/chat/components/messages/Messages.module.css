@@ -1,0 +1,13 @@
+.messageScreen {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+.messageList {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: scroll;
+}

@@ -1,0 +1,13 @@
+.messageBox {
+  display: flex;
+  gap: 0.2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 10px 0px 10px;
+  width: 100%;
+}
+
+.messageBoxInput {
+  width: 100%;
+}
