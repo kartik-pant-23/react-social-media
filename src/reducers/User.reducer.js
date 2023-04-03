@@ -1,4 +1,5 @@
 import _get from "lodash.get";
+import _map from "lodash.map";
 import _random from "lodash.random";
 
 import {
@@ -7,6 +8,8 @@ import {
   FETCH_USER_FAILURE,
   CHANGE_CURRENT_USER,
   CHANGE_CURRENT_USER_RANDOMLY,
+  CURRENT_USER_COLOR,
+  OTHER_USER_COLORS,
 } from "../actions/User.actions";
 
 const initialState = {
@@ -36,17 +39,37 @@ const reducer = (state = initialState, action) => {
         loading: false,
         error: _get(action, "payload"),
       };
-    case CHANGE_CURRENT_USER:
+    case CHANGE_CURRENT_USER: {
+      const currentUser = _get(action, "payload");
       return {
         ...state,
-        currentUser: _get(action, "payload"),
+        users: _map(_get(state, "users"), (user) => {
+          if (_get(user, "id") === _get(_get(state, "currentUser"), "id")) {
+            const randomColorIndex = _random(OTHER_USER_COLORS.length - 1);
+            const randomColor = OTHER_USER_COLORS[randomColorIndex];
+            return {
+              ...user,
+              color: randomColor,
+            };
+          }
+          return user;
+        }),
+        currentUser: {
+          ...currentUser,
+          color: CURRENT_USER_COLOR,
+        },
       };
+    }
     case CHANGE_CURRENT_USER_RANDOMLY: {
       const usersLength = _get(state, "users", []).length;
       let currentUser = null;
       if (usersLength > 0) {
         const randomUserIndex = _random(usersLength - 1);
         currentUser = _get(state, ["users", randomUserIndex]);
+        currentUser = {
+          ...currentUser,
+          color: CURRENT_USER_COLOR,
+        };
       }
       return {
         ...state,
