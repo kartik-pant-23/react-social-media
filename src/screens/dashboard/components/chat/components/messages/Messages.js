@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
-import _filter from "lodash.filter";
 import PropTypes from "prop-types";
 
 import { getMessages } from "./Messages.utils";
