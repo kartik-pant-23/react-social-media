@@ -12,7 +12,6 @@ const OTHER_USER_COLORS = [
   "darkmagenta",
   "cornflowerblue",
   "darkorange",
-  "green",
   "brown",
   "chocolate",
   "coral",
