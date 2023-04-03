@@ -18,7 +18,14 @@ function UserCard({ user }) {
 
   return (
     <div className={styles.container} onClick={handleUserCardClick}>
-      <ProfileCircleAvatar name={user.name} styles={{ height: "3rem" }} />
+      <ProfileCircleAvatar
+        name={user.name}
+        styles={{
+          height: "3rem",
+          backgroundColor: user.color,
+          color: "white",
+        }}
+      />
       <div>
         <div className={styles.username}>{user.username}</div>
         <div className={styles.name}>{user.name}</div>
@@ -32,6 +39,7 @@ UserCard.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
   }).isRequired,
 };
 
