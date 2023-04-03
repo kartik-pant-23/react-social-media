@@ -31,7 +31,11 @@ ProfileCircleAvatar.propTypes = {
 
 ProfileCircleAvatar.defaultProps = {
   styles: {},
-  onClick: () => {},
+  onClick: null,
 };
 
 export default ProfileCircleAvatar;
+
+ProfileCircleAvatar.prototype = {
+  name: PropTypes.string,
+};
