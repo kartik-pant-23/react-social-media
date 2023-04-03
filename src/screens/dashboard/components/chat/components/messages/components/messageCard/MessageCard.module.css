@@ -1,0 +1,21 @@
+.sender {
+  display: flex;
+  background-color: teal;
+  color: white;
+  border-radius: 4px 4px 0px 4px;
+  padding: 5px 10px 5px 5px;
+  margin: 2px;
+  align-self: flex-end;
+  max-width: 30rem;
+}
+
+.receiver {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
+  border-radius: 4px 4px 4px 0px;
+  padding: 5px 5px 5px 10px;
+  margin: 2px 2px 2px 5px;
+  align-self: flex-start;
+  max-width: 30rem;
+}
