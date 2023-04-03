@@ -1,13 +1,13 @@
 .messageScreen {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 57vw;
 }
 
 .messageList {
-  height: 80vh;
+  height: calc(100% - 4rem);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   overflow: scroll;
+  padding: 1rem;
 }

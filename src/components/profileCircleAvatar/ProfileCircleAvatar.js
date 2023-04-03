@@ -1,9 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-import propTypes from "prop-types";
-=======
 import PropTypes from "prop-types";
->>>>>>> main
 
 import { getInitials } from "./ProfileCircleAvatar.utils";
 import DefaultStyles from "./ProfileCircleAvatar.module.css";
@@ -35,11 +31,11 @@ ProfileCircleAvatar.propTypes = {
 
 ProfileCircleAvatar.defaultProps = {
   styles: {},
-  onClick: () => {},
+  onClick: null,
 };
 
 export default ProfileCircleAvatar;
 
 ProfileCircleAvatar.prototype = {
-  name: propTypes.string,
+  name: PropTypes.string,
 };

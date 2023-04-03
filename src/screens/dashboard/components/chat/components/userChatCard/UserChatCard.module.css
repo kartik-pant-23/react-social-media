@@ -4,8 +4,25 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  padding: 3px;
+  padding: 0;
   margin: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: start;
+  width: 100%;
+}
+
+.activeChatUserCard {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-right: 0.25rem solid teal;
+  background-color: rgba(0, 128, 128, 0.05);
+  cursor: pointer;
+  padding: 0;
+  margin: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: start;
+  width: 100%;
 }
 
 .chatUsersList {
@@ -13,14 +30,14 @@
   align-items: center;
   height: fit-content;
   padding: 0.1rem 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
 }
 
 .userChatDescription {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 10px;
+  padding: 10px;
 }
 
 .chatCardMessage {

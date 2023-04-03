@@ -1,11 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import ProfileCircleAvatar from "../../../../../../components/profileCircleAvatar";
 import styles from "./UserChatCard.module.css";
 
-function UserChatCard({ name, onCardClick }) {
+function UserChatCard({ name, onCardClick, id, receiverId }) {
   return (
-    <button type="button" className={styles.chatUserCard} onClick={onCardClick}>
+    <button
+      type="button"
+      className={
+        id === receiverId ? styles.activeChatUserCard : styles.chatUserCard
+      }
+      onClick={onCardClick}
+    >
       <div className={styles.chatUsersList}>
         <ProfileCircleAvatar
           styles={{
@@ -18,7 +25,7 @@ function UserChatCard({ name, onCardClick }) {
         <div className={styles.userChatDescription}>
           <span>{name}</span>
           <span className={styles.chatCardMessage}>
-            How's your weekend going !! Have some plans
+            How's the weekend going !! Let's catch up
           </span>
         </div>
       </div>
@@ -27,3 +34,10 @@ function UserChatCard({ name, onCardClick }) {
 }
 
 export default UserChatCard;
+
+UserChatCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  receiverId: PropTypes.number.isRequired,
+  onCardClick: PropTypes.func.isRequired,
+};

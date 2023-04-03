@@ -34,12 +34,14 @@ export default function Chat() {
       return (
         <UserChatCard
           key={user.id}
+          id={user.id}
+          receiverId={receiverId}
           name={user.name}
           onCardClick={handleCardClick(user.id)}
         />
       );
     });
-  }, [usersData.currentUser.id, usersData.users]);
+  }, [usersData.currentUser.id, usersData.users, receiverId]);
 
   return (
     <div className={styles.chatScreen}>

@@ -1,9 +1,10 @@
 .chatScreen {
   display: flex;
-  width: 100%;
+  width: 80vw;
 }
 
 .userChatCard {
   border-right: 0.5px solid rgba(0, 0, 0, 0.273);
   overflow: scroll;
+  width: 23vw;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./EmptyChat.module.css";
 
@@ -11,3 +12,7 @@ function EmptyChat({ image }) {
 }
 
 export default EmptyChat;
+
+EmptyChat.proptype = {
+  image: PropTypes.string.isRequired,
+};
