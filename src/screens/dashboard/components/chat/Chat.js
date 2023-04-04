@@ -36,7 +36,7 @@ export default function Chat() {
           key={user.id}
           id={user.id}
           receiverId={receiverId}
-          name={user.name}
+          user={user}
           onCardClick={handleCardClick(user.id)}
         />
       );

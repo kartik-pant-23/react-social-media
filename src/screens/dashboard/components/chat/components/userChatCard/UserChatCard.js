@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import ProfileCircleAvatar from "../../../../../../components/profileCircleAvatar";
 import styles from "./UserChatCard.module.css";
 
-function UserChatCard({ name, onCardClick, id, receiverId }) {
+function UserChatCard({ user, onCardClick, id, receiverId }) {
   return (
     <button
-      type="button"
+      type='button'
       className={
         id === receiverId ? styles.activeChatUserCard : styles.chatUserCard
       }
@@ -15,7 +15,7 @@ function UserChatCard({ name, onCardClick, id, receiverId }) {
     >
       <ProfileCircleAvatar
         styles={{
-          backgroundColor: "teal",
+          backgroundColor: user.color,
           color: "white",
           height: "2.5rem",
         }}
@@ -35,7 +35,10 @@ function UserChatCard({ name, onCardClick, id, receiverId }) {
 export default UserChatCard;
 
 UserChatCard.propTypes = {
-  name: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+  }).isRequired,
   id: PropTypes.number.isRequired,
   receiverId: PropTypes.number.isRequired,
   onCardClick: PropTypes.func.isRequired,
