@@ -8,6 +8,8 @@
   height: calc(100% - 4rem);
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
   padding: 1rem;
 }

@@ -20,7 +20,7 @@ export default function Chat() {
   const showMessages = useMemo(() => {
     if (!receiverId)
       return (
-        <EmptyChat image='https://cdn.dribbble.com/users/1376822/screenshots/6132861/recruitify_chat_empty_state_l.swierad.png?compress=1&resize=400x300' />
+        <EmptyChat image="https://cdn.dribbble.com/users/1376822/screenshots/6132861/recruitify_chat_empty_state_l.swierad.png?compress=1&resize=500x200" />
       );
     return (
       <Messages receiverId={receiverId} senderId={usersData.currentUser.id} />

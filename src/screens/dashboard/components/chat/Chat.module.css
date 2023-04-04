@@ -5,6 +5,7 @@
 
 .userChatCard {
   border-right: 0.5px solid rgba(0, 0, 0, 0.273);
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 23vw;
 }

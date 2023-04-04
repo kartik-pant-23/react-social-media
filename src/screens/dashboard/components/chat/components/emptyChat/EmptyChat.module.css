@@ -2,6 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
-  height: 75vh;
+  width: 57vw;
+  height: calc(100% - 4rem);
 }

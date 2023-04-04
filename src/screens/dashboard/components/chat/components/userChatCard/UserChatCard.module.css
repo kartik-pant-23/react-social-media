@@ -1,11 +1,11 @@
 .chatUserCard {
   display: flex;
-  flex-direction: column;
   border: none;
+  align-items: center;
   background-color: transparent;
   cursor: pointer;
-  padding: 0;
-  margin: 0px;
+  padding: 0.3rem 1rem;
+  margin: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   text-align: start;
   width: 100%;
@@ -13,23 +13,15 @@
 
 .activeChatUserCard {
   display: flex;
-  flex-direction: column;
   border: none;
   border-right: 0.25rem solid teal;
+  align-items: center;
   background-color: rgba(0, 128, 128, 0.05);
   cursor: pointer;
-  padding: 0;
-  margin: 0px;
+  padding: 0.3rem 1rem;
+  margin: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   text-align: start;
-  width: 100%;
-}
-
-.chatUsersList {
-  display: flex;
-  align-items: center;
-  height: fit-content;
-  padding: 0.1rem 1rem;
   width: 100%;
 }
 
@@ -37,16 +29,15 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 10px;
+  padding: 0.75rem;
 }
 
 .chatCardMessage {
   display: block;
   font-size: 0.8rem;
   color: grey;
-  width: 200px;
+  width: calc(23vw - 6rem);
   overflow: hidden;
   white-space: nowrap;
-  word-wrap: nowrap;
   text-overflow: ellipsis;
 }
