@@ -13,21 +13,20 @@ function UserChatCard({ name, onCardClick, id, receiverId }) {
       }
       onClick={onCardClick}
     >
-      <div className={styles.chatUsersList}>
-        <ProfileCircleAvatar
-          styles={{
-            backgroundColor: "teal",
-            color: "white",
-            height: "2.5rem",
-          }}
-          name={name}
-        />
-        <div className={styles.userChatDescription}>
-          <span>{name}</span>
-          <span className={styles.chatCardMessage}>
-            How's the weekend going !! Let's catch up
-          </span>
-        </div>
+      <ProfileCircleAvatar
+        styles={{
+          backgroundColor: "teal",
+          color: "white",
+          height: "2.5rem",
+        }}
+        name={name}
+      />
+      <div className={styles.userChatDescription}>
+        <span>{name}</span>
+        <span className={styles.chatCardMessage}>
+          How's the weekend going !! Let's catch up and make this moment
+          memorable !
+        </span>
       </div>
     </button>
   );
