@@ -7,7 +7,7 @@ import styles from "./UserChatCard.module.css";
 function UserChatCard({ user, onCardClick, id, receiverId }) {
   return (
     <button
-      type='button'
+      type="button"
       className={
         id === receiverId ? styles.activeChatUserCard : styles.chatUserCard
       }
@@ -19,10 +19,10 @@ function UserChatCard({ user, onCardClick, id, receiverId }) {
           color: "white",
           height: "2.5rem",
         }}
-        name={name}
+        name={user.name}
       />
       <div className={styles.userChatDescription}>
-        <span>{name}</span>
+        <span>{user.name}</span>
         <span className={styles.chatCardMessage}>
           How's the weekend going !! Let's catch up and make this moment
           memorable !
@@ -40,6 +40,6 @@ UserChatCard.propTypes = {
     color: PropTypes.string.isRequired,
   }).isRequired,
   id: PropTypes.number.isRequired,
-  receiverId: PropTypes.number.isRequired,
+  receiverId: PropTypes.number,
   onCardClick: PropTypes.func.isRequired,
 };
