@@ -35,7 +35,3 @@ ProfileCircleAvatar.defaultProps = {
 };
 
 export default ProfileCircleAvatar;
-
-ProfileCircleAvatar.prototype = {
-  name: PropTypes.string,
-};

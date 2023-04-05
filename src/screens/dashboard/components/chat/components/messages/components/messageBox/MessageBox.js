@@ -23,6 +23,7 @@ function MessageBox({ senderId, receiverId }) {
         message: message,
         senderId: senderId,
         receiverId: receiverId,
+        seen: false,
       };
       dispatch(sendMessage(messageData));
     },
