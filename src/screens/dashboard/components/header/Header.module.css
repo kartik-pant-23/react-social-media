@@ -19,12 +19,8 @@
   display: flex;
   background-color: white;
   flex-direction: column;
-  position: absolute;
-  top: 5rem;
-  right: 1rem;
   border-radius: 0.25rem;
   border: none;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
 }
 
 .link {
