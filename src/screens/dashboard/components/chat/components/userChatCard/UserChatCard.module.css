@@ -41,3 +41,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.activeChatCardMessage {
+  display: block;
+  font-size: 0.8rem;
+  color: teal;
+  width: calc(23vw - 6rem);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

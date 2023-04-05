@@ -9,7 +9,7 @@ import EmptyChat from "./components/emptyChat";
 import styles from "./Chat.module.css";
 
 export default function Chat() {
-  const [receiverId, setReceiverId] = useState(null);
+  const [receiverId, setReceiverId] = useState();
 
   const usersData = useSelector((state) => state.users);
 
@@ -34,10 +34,10 @@ export default function Chat() {
       return (
         <UserChatCard
           key={user.id}
-          id={user.id}
-          receiverId={receiverId}
+          isActive={user.id === receiverId}
           user={user}
-          onCardClick={handleCardClick(user.id)}
+          senderId={usersData.currentUser.id}
+          onCardClick={handleCardClick}
         />
       );
     });
