@@ -7,6 +7,14 @@
   justify-content: space-around;
 }
 
+.userProfileBox {
+  border: none;
+  background-color: transparent;
+  padding: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .profileDropdown {
   display: flex;
   background-color: white;

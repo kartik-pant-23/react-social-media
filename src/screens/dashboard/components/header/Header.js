@@ -32,11 +32,15 @@ function Header() {
 
   const UserProfileBox = useMemo(() => {
     return (
-      <ProfileCircleAvatar
-        name={usersState.currentUser.name}
-        styles={HEADER_CIRCLE_AVATAR_STYLES}
+      <button
+        className={styles.userProfileBox}
         onClick={handleOpenProfileDropdown}
-      />
+      >
+        <ProfileCircleAvatar
+          name={usersState.currentUser.name}
+          styles={HEADER_CIRCLE_AVATAR_STYLES}
+        />
+      </button>
     );
   }, [usersState.currentUser.name]);
 
