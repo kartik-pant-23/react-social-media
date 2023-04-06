@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useCallback, useMemo, useState } from "react";
 import _map from "lodash.map";
 import _reject from "lodash.reject";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+import { seenMessage } from "../../../../actions/Chats.action";
 import Messages from "./components/messages";
 import UserChatCard from "./components/userChatCard/UserChatCard";
 import EmptyChat from "./components/emptyChat";
@@ -12,6 +13,7 @@ import { useParams } from "react-router-dom";
 export default function Chat() {
   const { userId } = useParams();
   const [receiverId, setReceiverId] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(userId);
@@ -20,9 +22,13 @@ export default function Chat() {
 
   const usersData = useSelector((state) => state.users);
 
-  const handleCardClick = (id) => () => {
-    setReceiverId(id);
-  };
+  const handleCardClick = useCallback(
+    (id) => () => {
+      setReceiverId(id);
+      dispatch(seenMessage(usersData.currentUser.id, id));
+    },
+    [setReceiverId, dispatch, usersData.currentUser.id]
+  );
 
   const showMessages = useMemo(() => {
     if (!receiverId)
@@ -41,14 +47,14 @@ export default function Chat() {
       return (
         <UserChatCard
           key={user.id}
-          id={user.id}
-          receiverId={receiverId}
+          isActive={user.id === receiverId}
           user={user}
-          onCardClick={handleCardClick(user.id)}
+          senderId={usersData.currentUser.id}
+          onCardClick={handleCardClick}
         />
       );
     });
-  }, [usersData.currentUser.id, usersData.users, receiverId]);
+  }, [usersData.currentUser.id, usersData.users, receiverId, handleCardClick]);
 
   return (
     <div className={styles.chatScreen}>
