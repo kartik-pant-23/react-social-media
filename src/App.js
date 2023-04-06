@@ -51,6 +51,15 @@ function App() {
           />
           <Route
             exact
+            path='chat/:userId'
+            element={
+              <PrivateRoute>
+                <Chat />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            exact
             path='create'
             element={
               <PrivateRoute>

@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
-import PostItemHeader from "./components/postItemHeader";
+import PostItemHeader from "../../../../../../components/userInfoCard";
 import PostItemFooter from "./components/postItemFooter";
 import styles from "./PostItem.module.css";
 

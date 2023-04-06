@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import _map from "lodash.map";
 import _reject from "lodash.reject";
 import { useSelector } from "react-redux";
@@ -7,9 +7,16 @@ import Messages from "./components/messages";
 import UserChatCard from "./components/userChatCard/UserChatCard";
 import EmptyChat from "./components/emptyChat";
 import styles from "./Chat.module.css";
+import { useParams } from "react-router-dom";
 
 export default function Chat() {
+  const { userId } = useParams();
   const [receiverId, setReceiverId] = useState(null);
+
+  useEffect(() => {
+    console.log(userId);
+    setReceiverId(userId ? parseInt(userId) : null);
+  }, [userId]);
 
   const usersData = useSelector((state) => state.users);
 
@@ -20,7 +27,7 @@ export default function Chat() {
   const showMessages = useMemo(() => {
     if (!receiverId)
       return (
-        <EmptyChat image="https://cdn.dribbble.com/users/1376822/screenshots/6132861/recruitify_chat_empty_state_l.swierad.png?compress=1&resize=500x200" />
+        <EmptyChat image='https://cdn.dribbble.com/users/1376822/screenshots/6132861/recruitify_chat_empty_state_l.swierad.png?compress=1&resize=500x200' />
       );
     return (
       <Messages receiverId={receiverId} senderId={usersData.currentUser.id} />

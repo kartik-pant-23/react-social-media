@@ -1,0 +1,13 @@
+.container {
+  width: 600px;
+  max-width: calc(100vw - 2rem);
+  border: none;
+  padding: 0;
+  display: block;
+  text-align: start;
+  cursor: pointer;
+}
+
+.container:hover > div {
+  background-color: #efefef;
+}
