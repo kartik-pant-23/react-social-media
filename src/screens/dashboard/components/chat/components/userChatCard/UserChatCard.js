@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -7,12 +7,8 @@ import { getRecentMessage } from "./userChatCard.utils";
 import styles from "./UserChatCard.module.css";
 
 function UserChatCard({ user, onCardClick, isActive, senderId }) {
-  let messageData = {
-    seen: null,
-    message: null,
-  };
   const messages = useSelector((state) => state.messages);
-  const handleCardClick = useCallback(onCardClick(user.id), [user.id]);
+  const handleCardClick = onCardClick(user.id);
   return (
     <button
       type="button"
@@ -28,7 +24,7 @@ function UserChatCard({ user, onCardClick, isActive, senderId }) {
         name={user.name}
       />
       <div className={styles.userChatDescription}>
-        <span>{user.name}</span>
+        <span>{user.username}</span>
         <span
           className={
             !getRecentMessage(senderId, user.id, messages).seen

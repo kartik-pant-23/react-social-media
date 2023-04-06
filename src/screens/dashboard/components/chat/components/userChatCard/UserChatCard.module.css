@@ -45,7 +45,8 @@
 .activeChatCardMessage {
   display: block;
   font-size: 0.8rem;
-  color: teal;
+  color: black;
+  font-weight: bold;
   width: calc(23vw - 6rem);
   overflow: hidden;
   white-space: nowrap;

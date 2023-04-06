@@ -9,7 +9,7 @@ export const getRecentMessage = (senderId, receiverId, messages) => {
   });
   if (lastIndexMessage === -1)
     return {
-      seen: undefined,
+      seen: true,
       message: "Nothing Here !! Tap to chat ",
     };
   if (
@@ -17,12 +17,12 @@ export const getRecentMessage = (senderId, receiverId, messages) => {
     messages[lastIndexMessage].receiverId === receiverId
   )
     return {
-      seen: messages[lastIndexMessage].seen,
-      message: "You : " + messages[lastIndexMessage].message,
+      seen: true,
+      message: "You: " + messages[lastIndexMessage].message,
     };
   else
     return {
       seen: messages[lastIndexMessage].seen,
-      message: "Them : " + messages[lastIndexMessage].message,
+      message: "Them: " + messages[lastIndexMessage].message,
     };
 };
