@@ -17,7 +17,7 @@ function UserInfoCard({ user, showName, style }) {
       />
       <div>
         <div className={styles.username}>{`${user.username} ${
-          showName && `(${user.name})`
+          showName ? `(${user.name})` : ""
         }`}</div>
         <div
           className={styles.address}
