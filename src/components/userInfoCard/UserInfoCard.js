@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import ProfileCircleAvatar from "../../../../../../../../components/profileCircleAvatar";
-import styles from "./PostItemHeader.module.css";
+import ProfileCircleAvatar from "../profileCircleAvatar";
+import styles from "./UserInfoCard.module.css";
 
-function PostItemHeader({ user }) {
+function UserInfoCard({ user, showName, style }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={style}>
       <ProfileCircleAvatar
         name={user.name}
         styles={{
@@ -16,7 +16,9 @@ function PostItemHeader({ user }) {
         }}
       />
       <div>
-        <div className={styles.username}>{user.username}</div>
+        <div className={styles.username}>{`${user.username} ${
+          showName && `(${user.name})`
+        }`}</div>
         <div
           className={styles.address}
         >{`${user.address.street}, ${user.address.city}`}</div>
@@ -25,7 +27,7 @@ function PostItemHeader({ user }) {
   );
 }
 
-PostItemHeader.propTypes = {
+UserInfoCard.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
@@ -36,4 +38,9 @@ PostItemHeader.propTypes = {
   }).isRequired,
 };
 
-export default PostItemHeader;
+UserInfoCard.defaultProps = {
+  showName: false,
+  style: {},
+};
+
+export default UserInfoCard;

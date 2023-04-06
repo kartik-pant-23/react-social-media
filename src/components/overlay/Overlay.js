@@ -22,7 +22,7 @@ function Overlay({
       <div
         className={styles.overlay}
         onClick={handleOnOverlayClosed}
-        style={{ ...overlayStyles }}
+        style={{ ...overlayStyles, zIndex: 100 }}
       >
         <div className={styles.content} style={{ ...contentStyles }}>
           {Content}
