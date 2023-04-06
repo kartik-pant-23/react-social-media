@@ -17,4 +17,5 @@
   position: absolute;
   background-color: white;
   z-index: 1;
+  overflow-y: auto;
 }

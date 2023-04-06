@@ -4,11 +4,9 @@ import { createSelector } from "reselect";
 import { useNavigate } from "react-router-dom";
 import _reject from "lodash.reject";
 import _get from "lodash.get";
-import _map from "lodash.map";
 import _debounce from "lodash.debounce";
 
-import Overlay from "../../../../../../components/overlay";
-import SearchUserCard from "./components/searchUserCard";
+import SearchUsersOverlay from "./components/searchUsersOverlay";
 import { filterUsersBySearchString } from "./TextBox.utils";
 import styles from "./TextBox.module.css";
 
@@ -21,20 +19,21 @@ const usersSelector = createSelector(
 function TextBox() {
   const [isOverlayOpened, setIsOverlayOpened] = useState(false);
   const [query, setQuery] = useState("");
+  const [showEmptyList, setShowEmptyList] = useState(false);
 
   const users = useSelector(usersSelector);
   const [searchedUsersList, setSearchedUsersList] = useState([]);
 
   const searchUser = useCallback(
     (searchQuery) => {
-      console.log(searchQuery);
       let filteredUsers = [];
       if (searchQuery.trim().length > 0) {
         filteredUsers = filterUsersBySearchString(users, searchQuery.trim());
       }
       setSearchedUsersList(filteredUsers);
+      setShowEmptyList(!filteredUsers.length && searchQuery.length > 0);
     },
-    [users, setSearchedUsersList]
+    [users, setSearchedUsersList, setShowEmptyList]
   );
 
   const debouncedSearch = useMemo(
@@ -57,9 +56,14 @@ function TextBox() {
   }, [searchedUsersList.length, handleOnOverlayOpened]);
 
   useEffect(() => {
-    if (searchedUsersList.length) handleOnOverlayOpened();
+    if (searchedUsersList.length || showEmptyList) handleOnOverlayOpened();
     else handleOnOverlayClosed();
-  }, [searchedUsersList.length, handleOnOverlayOpened, handleOnOverlayClosed]);
+  }, [
+    searchedUsersList.length,
+    showEmptyList,
+    handleOnOverlayOpened,
+    handleOnOverlayClosed,
+  ]);
 
   const handleOnQueryChange = useCallback(
     (e) => {
@@ -73,23 +77,11 @@ function TextBox() {
   const navigate = useNavigate();
   const handleSearchCardClicked = useCallback(
     (userId) => {
+      setQuery("");
+      setSearchedUsersList([]);
       navigate(`/chat/${userId}`);
     },
     [navigate]
-  );
-  const SearchedUsersList = useMemo(
-    () => (
-      <>
-        {_map(searchedUsersList, (user) => (
-          <SearchUserCard
-            key={user.id}
-            user={user}
-            onCardClick={handleSearchCardClicked}
-          />
-        ))}
-      </>
-    ),
-    [searchedUsersList, handleSearchCardClicked]
   );
 
   return (
@@ -102,13 +94,12 @@ function TextBox() {
         onChange={handleOnQueryChange}
         onFocus={handleSearchBoxOnFocus}
       />
-      <Overlay
-        isOpen={isOverlayOpened}
-        Content={SearchedUsersList}
-        shouldCloseOnOverlayClicked={true}
-        contentStyles={{ top: "1rem" }}
-        overlayStyles={{ top: "4rem", height: "calc(100vh - 4rem)" }}
-        onClose={handleOnOverlayClosed}
+      <SearchUsersOverlay
+        isOverlayOpened={isOverlayOpened}
+        onOverlayClosed={handleOnOverlayClosed}
+        usersList={searchedUsersList}
+        onSearchCardClicked={handleSearchCardClicked}
+        showEmptyList={showEmptyList}
       />
     </>
   );
