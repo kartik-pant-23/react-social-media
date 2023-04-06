@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import _map from "lodash.map";
 import _reject from "lodash.reject";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,20 +15,14 @@ export default function Chat() {
   const [receiverId, setReceiverId] = useState(null);
   const dispatch = useDispatch();
 
+  const usersData = useSelector((state) => state.users);
   useEffect(() => {
     console.log(userId);
-    setReceiverId(userId ? parseInt(userId) : null);
-  }, [userId]);
-
-  const usersData = useSelector((state) => state.users);
-
-  const handleCardClick = useCallback(
-    (id) => () => {
-      setReceiverId(id);
-      dispatch(seenMessage(usersData.currentUser.id, id));
-    },
-    [setReceiverId, dispatch, usersData.currentUser.id]
-  );
+    if (userId) {
+      setReceiverId(userId ? parseInt(userId) : null);
+      dispatch(seenMessage(usersData.currentUser.id, parseInt(userId)));
+    }
+  }, [userId, dispatch, setReceiverId, usersData.currentUser.id]);
 
   const showMessages = useMemo(() => {
     if (!receiverId)
@@ -50,11 +44,10 @@ export default function Chat() {
           isActive={user.id === receiverId}
           user={user}
           senderId={usersData.currentUser.id}
-          onCardClick={handleCardClick}
         />
       );
     });
-  }, [usersData.currentUser.id, usersData.users, receiverId, handleCardClick]);
+  }, [usersData.currentUser.id, usersData.users, receiverId]);
 
   return (
     <div className={styles.chatScreen}>
