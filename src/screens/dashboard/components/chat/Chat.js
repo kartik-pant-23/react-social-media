@@ -1,21 +1,27 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import _map from "lodash.map";
 import _reject from "lodash.reject";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+import { seenMessage } from "../../../../actions/Chats.action";
 import Messages from "./components/messages";
 import UserChatCard from "./components/userChatCard/UserChatCard";
 import EmptyChat from "./components/emptyChat";
 import styles from "./Chat.module.css";
 
 export default function Chat() {
+  const dispatch = useDispatch();
   const [receiverId, setReceiverId] = useState();
 
   const usersData = useSelector((state) => state.users);
 
-  const handleCardClick = (id) => () => {
-    setReceiverId(id);
-  };
+  const handleCardClick = useCallback(
+    (id) => () => {
+      setReceiverId(id);
+      dispatch(seenMessage(usersData.currentUser.id, id));
+    },
+    [setReceiverId, dispatch, usersData.currentUser.id]
+  );
 
   const showMessages = useMemo(() => {
     if (!receiverId)
@@ -41,7 +47,7 @@ export default function Chat() {
         />
       );
     });
-  }, [usersData.currentUser.id, usersData.users, receiverId]);
+  }, [usersData.currentUser.id, usersData.users, receiverId, handleCardClick]);
 
   return (
     <div className={styles.chatScreen}>

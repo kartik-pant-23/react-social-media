@@ -4,3 +4,11 @@ export const sendMessage = (messageData) => {
     payload: messageData,
   };
 };
+
+export const seenMessage = (senderId, receiverId) => {
+  return {
+    type: "SEEN_MESSAGE",
+    senderId: senderId,
+    receiverId: receiverId,
+  };
+};
