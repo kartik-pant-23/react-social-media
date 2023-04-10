@@ -9,6 +9,7 @@ import UserChatCard from "./components/userChatCard/UserChatCard";
 import EmptyChat from "./components/emptyChat";
 import styles from "./Chat.module.css";
 import { useParams } from "react-router-dom";
+import { getRecentUserList } from "./Chat.utils";
 
 export default function Chat() {
   const { userId } = useParams();
@@ -16,8 +17,20 @@ export default function Chat() {
   const dispatch = useDispatch();
 
   const usersData = useSelector((state) => state.users);
+  let allUsers = _reject(usersData.users, ["id", usersData.currentUser.id]);
+  const messages = useSelector((state) => state.messages);
+  let tmpUsers = useMemo(
+    () =>
+      getRecentUserList(
+        usersData.currentUser.id,
+        receiverId,
+        messages,
+        allUsers
+      ),
+    []
+  );
+
   useEffect(() => {
-    console.log(userId);
     if (userId) {
       setReceiverId(userId ? parseInt(userId) : null);
       dispatch(seenMessage(usersData.currentUser.id, parseInt(userId)));
@@ -27,7 +40,7 @@ export default function Chat() {
   const showMessages = useMemo(() => {
     if (!receiverId)
       return (
-        <EmptyChat image='https://cdn.dribbble.com/users/1376822/screenshots/6132861/recruitify_chat_empty_state_l.swierad.png?compress=1&resize=500x200' />
+        <EmptyChat image="https://cdn.dribbble.com/users/1376822/screenshots/6132861/recruitify_chat_empty_state_l.swierad.png?compress=1&resize=500x200" />
       );
     return (
       <Messages receiverId={receiverId} senderId={usersData.currentUser.id} />
@@ -35,9 +48,7 @@ export default function Chat() {
   }, [receiverId, usersData.currentUser.id]);
 
   const usersList = useMemo(() => {
-    let allUsers = _reject(usersData.users, ["id", usersData.currentUser.id]);
-
-    return _map(allUsers, (user) => {
+    return _map(tmpUsers, (user) => {
       return (
         <UserChatCard
           key={user.id}
@@ -47,7 +58,7 @@ export default function Chat() {
         />
       );
     });
-  }, [usersData.currentUser.id, usersData.users, receiverId]);
+  }, [usersData.currentUser.id, receiverId, tmpUsers]);
 
   return (
     <div className={styles.chatScreen}>
